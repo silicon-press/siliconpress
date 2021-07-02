@@ -10,8 +10,17 @@ The files will instansiate a const structure called `siliconpress` within the fi
  * `uid` - a 128-bit globally unique ID, represented as uint8_t[8] 
  * `key` - a 128-bit secret key, represented as uint8_t[8] 
  * `ecc` - a 256-bit private ECC key, represented as uint8_t[16] 
- 
-These variables can then be used within your firmware application:
+
+The actual structure is:
+```c
+struct siliconpress_t {
+    const uint8_t uid[16];  // 128-bit globally unique identifier 
+    const uint8_t key[16];  // 128-bit symetric key 
+    const uint8_t ecc[32];  // 256-bit ECC private key
+};
+```
+
+This structure instance can then be used within your firmware application:
 
 ```c
 // Example using Silicon Press injected identity & keys
